@@ -1,0 +1,382 @@
+<%include ./partials/header%>
+
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello <%=user.displayName%></h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can update your display name and avatar, and tell us what time to email you at, or turn off emails all together!</p>
+            <!-- <a href="#!" class="btn btn-info">Edit profile</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src=<%=user.photoURL%> class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              <div class="d-flex justify-content-between">
+                <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
+                <!-- <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
+              </div>
+            </div> 
+            <div class="card-body pt-0 pt-md-4">
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                    <!-- <div>
+                      <span class="heading">22</span>
+                      <span class="description">Friends</span>
+                    </div> -->
+<!--                     <div>
+                      <span class="heading">10</span>
+                      <span class="description">Photos</span>
+                    </div>
+                    <div>
+                      <span class="heading">89</span>
+                      <span class="description">Comments</span>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h3>
+                  <%=user.displayName%><span class="font-weight-light"></span>
+                </h3>
+                <div>
+                  <form action="/updateEmail" method="POST">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Email</label>
+                        <input type="text" id="input-first-name" name="email" class="form-control form-control-alternative" placeholder="Email" value="<%=user.email%>">
+                      </div>
+                    <input type="hidden" name="_csrf">
+                    <button class="btn btn-info">Update Email</button>
+                    <p><small>Note: When you change your email, you will have to log in again with the new email</small></p>
+                  </form>
+                </div>
+                <hr class="my-4" />
+                <div>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Delete Your Account
+                  </button>
+                  <p><small>Note: We will delete all your data if you delete your account.  We don't retain any data, and no data will be recoverable.</small></p>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Are You Sure You Want To Delete Your Account?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          This action can not be undone.  <br/>This will delete your account and all your account data.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Back To Saftey</button>
+                          <form action='/deleteUser' method="POST">
+                            <input type="hidden" name="_csrf">
+                            <button type="button" id="deleteUser" class="btn btn-danger">Delete My Account</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+<!--                   <form action="/deleteUser" method="POST">
+                    <button class="btn btn-danger">Delete Your Account</button>
+                    <p><small>Note: We will delete all your data if you delete your account.  We don't retain any data, and no data will be recoverable.</small></p>
+                  </form> -->
+                </div>
+<!--                 <div class="h5 font-weight-300">
+                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                </div> -->
+<!--                 <div class="h5 mt-4">
+                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                </div> -->
+ <!--                <div>
+                  <i class="ni education_hat mr-2"></i>
+                </div>
+                <hr class="my-4" />
+                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
+                <!-- <a href="#">Show more</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My account</h3>
+                </div>
+<!--                 <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div> -->
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="/userSettings" method="POST">
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">First name</label>
+                        <input type="text" id="input-first-name" name="firstName" class="form-control form-control-alternative" placeholder="First name" value="<%=user.firstName%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Last name</label>
+                        <input type="text" id="input-last-name" name="lastName" class="form-control form-control-alternative" placeholder="Last name" value="<%=user.lastName%>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-username">Display Name</label>
+                        <input type="text" id="input-username" name="displayName" class="form-control form-control-alternative" placeholder="Username" value="<%=user.displayName%>">
+                      </div>
+                    </div>
+<!--                     <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Email address</label>
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                      </div>
+                    </div> -->
+                  
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Avatar URL</label>
+                        <input type="text" id="input-last-name" name="photoURL" class="form-control form-control-alternative" placeholder="Last name" value="<%=user.photoURL%>">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-4" />
+                
+
+                <span id="emailMeAtSection">
+                  <h6 class="heading-small text-muted mb-4">Email Me At - <%=user.emailMeAt.hour%>:<%=user.emailMeAt.minute%> <%=user.timeZone%></h6>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-first-name">Hour</label>
+                          <input type="number" min=0 max=23 id="hourInput" name="emailMeAt.hour" class="form-control form-control-alternative" placeholder="10" value="<%=user.emailMeAt.hour%>">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-last-name">Minute</label>
+                          <input type="number" min=0 max=60 id="minuteInput" name="emailMeAt.minute" class="form-control form-control-alternative" placeholder="Last name" value="<%=user.emailMeAt.minute%>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-username">TimeZone</label>
+                          <select name="timeZone" class="form-control form-control-alternative" placeholder="TimeZone">
+                            <option id="firstOption" value=<%= user.timeZone %>><%= user.timeZone %></option>
+                            <% timeZoneOptions.forEach((option)=>{ %>
+                              <option value=<%=option%>><%=option%></option>
+                            <% }) %>
+                          </select>
+                          <p><small id='helperText'></small></p>
+
+  <!--                         <input type="text" id="input-username" name="timeZone" class="form-control form-control-alternative" placeholder="Username" value="<%=user.timeZone%>"> -->
+                        </div>
+                      </div>
+  <!--                     <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Email address</label>
+                          <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                        </div>
+                      </div> -->
+                    
+     <!--                  <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-last-name">Avatar URL</label>
+                          <input type="text" id="input-last-name" name="photoURL" class="form-control form-control-alternative" placeholder="Last name" value="<%=user.photoURL%>">
+                        </div>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <hr class="my-4" />
+                </span>               
+                  <!-- Address -->
+  <!--                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-address">Address</label>
+                          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-city">City</label>
+                          <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Country</label>
+                          <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Postal code</label>
+                          <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="my-4" /> -->
+                  <!-- Description -->
+  <!--                <h6 class="heading-small text-muted mb-4">About me</h6>
+                  <div class="pl-lg-4">
+                    <div class="form-group">
+                      <label>About Me</label>
+                      <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    </div>
+                  </div> -->
+
+                <h6 class="heading-small text-muted mb-4">Turn Off Emails</h6>
+                <label class="switch" style="float: none">
+                  <input type="checkbox" name="dontEmailMe" id="dontEmailMe" class="danger"<% if(user.dontEmailMe){ %> checked <% } %>>
+                  <span class="slider round"></span>
+                </label>
+                <p id='emailTurnedOffText'></p>
+
+                <hr class="my-4" />
+                <input type="hidden" name="_csrf">
+                <button class="btn btn-info">Update User Settings</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+  // ==== Guess TimeZone ===
+  var timeZoneGuess = Intl.DateTimeFormat().resolvedOptions().timeZone
+  function checkFirstOption(){
+    document.getElementById('helperText').innerText = "Local time zone is - " + timeZoneGuess
+    
+    var firstOption = document.getElementById('firstOption')
+    if(!firstOption.value){
+      firstOption.value = timeZoneGuess
+      firstOption.innerText = timeZoneGuess
+    }
+  }
+
+  checkFirstOption()
+
+  // ======== hour and minute validation ======
+  const minuteInput = document.getElementById('minuteInput')
+  const hourInput = document.getElementById('hourInput')
+  minuteInput.addEventListener('input', function(){
+    if(this.value.toString().length < 2){
+      this.value = "0" + this.value
+    }
+    if(this.value.toString().length > 2){
+      this.value = this.value.toString().slice(-2)
+    }
+    if(this.value > 59){
+      this.value = 59
+    }
+    if(this.value < 0){
+      this.value = 0
+    }
+  })
+  hourInput.addEventListener('input', function(){
+    if(this.value.toString().length < 2){
+      this.value = "0" + this.value
+    }
+    if(this.value.toString().length > 2){
+      this.value = this.value.toString().slice(-2)
+    }
+    if(this.value > 23){
+      this.value = 23
+    }
+    if(this.value < 0){
+      this.value = 0
+    }
+  })
+
+// === Dont Email Me checkbox logic ===
+const emailMeCheckBox = document.getElementById('dontEmailMe')
+if(emailMeCheckBox.checked){
+    document.getElementById('emailMeAtSection').hidden = true
+    document.getElementById('emailTurnedOffText').innerHTML = '<small>You will not receive practice emails from us right now</small>'  
+}
+emailMeCheckBox.addEventListener('change', function(){
+  if(this.checked){
+    document.getElementById('emailMeAtSection').hidden = true
+    document.getElementById('emailTurnedOffText').innerHTML = '<small>Click Update to save this setting</small>'
+  }else{
+    document.getElementById('emailMeAtSection').hidden = false
+    document.getElementById('emailTurnedOffText').innerHTML = ''
+  }
+})
+
+
+// =========== Delete User Logic ============
+const deleteUserButton = document.getElementById("deleteUser")
+// console.log(deleteUserButton)
+deleteUserButton.addEventListener('click', function(){
+  deleteUserButton.innerHTML = "<div class='lds-dual-ring'></div>"
+  deleteUser()
+  .then((response)=>{
+    console.log(response)
+    if(response.redirected){
+      window.location.assign(response.url)
+    }
+  })
+  .catch((e)=>{console.log(e); alert("Something Went Wrong, email hugh@dailyguitarworkout.com")})
+})
+
+function deleteUser(){
+  var headers = new Headers();
+  const fetchData = {
+    method: 'POST',
+    redirect: 'follow',
+    credentials: 'include',
+    headers: headers,
+  }
+  // console.log(fetchData)
+  const response = fetch('/deleteUser', fetchData)
+  return response
+}
+
+</script>
+
+<%include ./partials/footer%>

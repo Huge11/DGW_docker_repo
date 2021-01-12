@@ -1,0 +1,267 @@
+<%include ./partials/header%>
+
+
+<!-- Header -->
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" id="header" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;" >
+  <!-- Mask -->
+  <span class="mask bg-gradient-default opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Hello <%=user.displayName%></h1>
+        <p class="text-white mt-0 mb-5">Tell us what to send in your emails, so that you will always get customized content!</p>
+        <p class="text-white">
+          <small>Or click here to update your display name and tell us what time to email you at!</small>
+        </p>
+        <a href="/userSettings" class="btn btn-info">User Settings</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class=" order-xl-2 mb-5 mb-xl-0 col-12">
+      <div class="card card-profile shadow">
+        <div class=" order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My Email Preferences</h3>
+                  <small>Select what you want emailed to you</small>
+                </div>
+<!--                 <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div> -->
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="/emailPreferences" method="POST">
+                <div class="container">
+                  <div class="row">
+                    <div class='col-lg-6 flex-column'>
+                      <div class="padding-bottom-20">
+                        <!-- <div class="card" style="margin:50px 0"> -->
+                          <!-- Default panel contents -->
+                          <div class="card-header bg-info text-white">
+                            <strong>Learn The Fretboard</strong>
+                            <label class="switch ">
+                              <input type="checkbox" id="learnTheFretBoardCheckBox" name="learnTheFretBoardSection" class="success" <% if(preferences.learnTheFretBoard.section){ %> checked <% } %>>
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                          <ul class="list-group list-group-flush" id="learnTheFretBoardList">
+                            <li class="list-group-item outline-primary">
+                              Note Name Practice
+                              <label class="switch ">
+                                <input type="checkbox" name="noteAndString" class="success" <% if(preferences.learnTheFretBoard.noteAndString){ %> checked <% } %>>
+                                <span class="slider round"></span>
+                              </label>
+                            </li>
+                          </ul>
+                        <!-- </div>  -->
+                      </div>
+                      <div class="padding-bottom-20">
+                          <!-- <div class="card" style="margin:50px 0"> -->
+                            <!-- Default panel contents -->
+                            <div class="card-header bg-info text-white">
+                              <strong>I Want To Learn New Chords!</strong>
+                              <label class="switch ">
+                                <input type="checkbox" id="chordsCheckBox" name="chordsSection" class="success" <% if(preferences.chords.section){ %> checked <% } %>>
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+
+                            <ul class="list-group list-group-flush" id="chordsList">
+
+                              <li class="list-group-item">
+                                Beginner Chords
+                                <label class="switch ">
+                                  <input type="checkbox" name="chordsBeginner" class="success"<% if(preferences.chords.beginner){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                              <li class="list-group-item">
+                                Intermediate Chords
+                                <label class="switch ">
+                                  <input type="checkbox" name="chordsIntermediate" class="success"<% if(preferences.chords.intermediate){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                            </ul>
+                          <!-- </div>  -->
+                        </div>                                        
+
+                        <div class="padding-bottom-20">
+                          <!-- <div class="card" style="margin:50px 0"> -->
+                            <!-- Default panel contents -->
+                            <div class="card-header bg-info text-white">
+                              <strong>I Want To Practice Scales!</strong>
+                              <label class="switch ">
+                                <input type="checkbox" id="scalesCheckBox" name="scalesSection" class="success" <% if(preferences.scales.section){ %> checked <% } %>>
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+
+                            <ul class="list-group list-group-flush" id="scalesList">
+
+                              <li class="list-group-item">
+                                Beginner Scales
+                                <label class="switch ">
+                                  <input type="checkbox" name="scalesBeginner" class="success"<% if(preferences.scales.beginner){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                              <li class="list-group-item">
+                                Intermediate Scales
+                                <label class="switch ">
+                                  <input type="checkbox" name="scalesIntermediate" class="success"<% if(preferences.scales.intermediate){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                            </ul>
+                          <!-- </div>  -->
+                        </div>
+                      </div>
+
+<!-- ========== Beginning Second Column ============================ -->
+
+                      <div class='col-lg-6 flex-column'>
+                        <div class="padding-bottom-20">
+                          <!-- <div class="card" style="margin:50px 0"> -->
+                            <!-- Default panel contents -->
+                            <div class="card-header bg-info text-white">
+                              <strong>Send Me Some Arpeggios!</strong>
+                              <label class="switch ">
+                                <input type="checkbox" id="arpeggiosCheckBox" name="arpeggiosSection" class="success" <% if(preferences.arpeggios.section){ %> checked <% } %>>
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+
+                            <ul class="list-group list-group-flush" id="arpeggiosList">
+
+                              <li class="list-group-item">
+                                Beginner Arpeggios
+                                <label class="switch ">
+                                  <input type="checkbox" name="arpeggiosBeginner" class="success"<% if(preferences.arpeggios.beginner){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                              <li class="list-group-item">
+                                Intermediate Arpeggios
+                                <label class="switch ">
+                                  <input type="checkbox" name="arpeggiosIntermediate" class="success"<% if(preferences.arpeggios.intermediate){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                            </ul>
+                          <!-- </div>  -->
+                        </div>
+                        <div class="padding-bottom-20">
+                          <!-- <div class="card" style="margin:50px 0"> -->
+                            <!-- Default panel contents -->
+                            <div class="card-header bg-info text-white">
+                              <strong>Send Me New Songs To Learn!</strong>
+                              <label class="switch ">
+                                <input type="checkbox" id="songsToLearnCheckBox" name="songsToLearnSection" class="success" <% if(preferences.songsToLearn.section){ %> checked <% } %>>
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+
+                            <ul class="list-group list-group-flush" id="songsToLearnList">
+
+                              <li class="list-group-item">
+                                Beginner + Intermediate
+                                <label class="switch ">
+                                  <input type="checkbox" name="songsToLearnBeginnerAndIntermediate" class="success"<% if(preferences.songsToLearn.beginnerAndIntermediate){ %> checked <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                              <li class="list-group-item d-none">
+                                Beginner + Intermediate
+                                <label class="switch ">
+                                  <input type="checkbox" name="songsToLearnBeginner" class="success"<% if(preferences.songsToLearn.beginner){ %> checked=false <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                              <li class="list-group-item d-none">
+                                Intermediate Songs
+                                <label class="switch ">
+                                  <input type="checkbox" name="songsToLearnIntermediate" class="success"<% if(preferences.songsToLearn.intermediate){ %> checked=false <% } %>>
+                                  <span class="slider round"></span>
+                                </label>
+                              </li>
+                            </ul>
+                          <!-- </div>  -->
+                        </div>
+                    </div> 
+
+                  </div>
+                </div>
+                <input type="hidden" name="_csrf">
+                <button class="btn btn-info">Update Preferences</button>
+                <hr class="my-4" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+
+  function setUpPage(){
+    setUpSection('learnTheFretBoard')
+    setUpSection('scales')
+    setUpSection('arpeggios')
+    setUpSection('chords')
+    setUpSection('songsToLearn')
+  }
+
+  function setUpSection(name){
+    var checkbox = document.getElementById(name + "CheckBox");
+    var section = document.getElementById(name + "List");
+    if(checkbox.checked){
+      section.style.display = 'flex'
+    } else{
+      section.style.display = 'none';
+      section.style.transform = "scale(0)"
+      section.style.transition = "all 1s ease-in-out"
+    }
+    var toggle = toggleSection.bind(null, checkbox, section);
+    checkbox.addEventListener('change', toggle);
+  }
+
+
+  function toggleSection(checkbox, section){
+    
+    if(checkbox.checked){
+      section.style.display = 'flex'
+      window.setTimeout(function(){
+        section.style.transition ="all 1s ease-in-out"
+        section.style.transform = "scale(1)"
+      }, 0)
+      // window.setTimeout(function(){
+      //   console.log('timeout function')
+      //   section.style.display = 'flex'
+      // }, 1000)
+      // section.style.visibility = "visible"
+      // section.hidden = false
+    }else{
+      section.style.transition ="all 1s ease-in-out"
+      section.style.transform = "scale(0)"
+      // section.style.visibility = "hidden"
+      // section.hidden = true
+      window.setTimeout(function(){
+        console.log('timeout function')
+        section.style.display = 'none'
+      }, 1000)
+    }
+  }
+
+  setUpPage()
+
+</script>
+
+      <%include ./partials/footer%>

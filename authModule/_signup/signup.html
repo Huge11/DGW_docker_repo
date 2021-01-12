@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Daily Guitar Workout</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="icon" href="/images/brand/favicon.png" type="image/x-icon">
+		<!-- Google Fonts -->
+				<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,500,700,800,900|Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+				<!-- Bootstrap 4.3.1 CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+		<!-- AOS 2.3.1 jQuery plugin CSS (Animations) -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<!-- FontAwesome CSS -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/css/custom.css">
+		<!-- Startup 3 CSS (Styles for all blocks) -->
+					<link href="css/style.css" rel="stylesheet" />
+				<!-- jQuery 3.3.1 -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			</head> 
+	<body>
+
+<!-- Form 1 -->
+
+<section class="form_1 pt-120 pb-120">
+
+	<style>
+		.form_1{
+			background-image:url(i/form_1_bg.jpg);
+		}
+		@media(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi){
+			.form_1{
+				background-image:url(i/form_1_bg@2x.jpg);
+			}
+		}
+
+	</style>
+	
+	<div class="container px-xl-0">
+		<div class="bg-light mx-auto mw-430 radius10 pt-40 px-50 pb-30">
+			<h2 class="mb-40 small text-center">Sign Up Now</h2>
+			<div class="mb-20 input_holder">
+				<input type="email" name="email" id="email" placeholder="Your email" class="input border-gray focus-action-1 color-heading placeholder-heading w-full" />
+			</div>
+			<div class="mb-20 input_holder">
+				<input type="password" name="password" id="password" placeholder="Your password" class="input border-gray focus-action-1 color-heading placeholder-heading w-full" />
+			</div>
+			<div>
+				<button id="signupButton" class="mt-25 btn action-1 w-full">Create an Account</button>
+				<span id='smallSpan'></span>
+			</div>
+			<div>
+				<p for="termsAndConditions" class="mt-25 color-heading w-full">
+					By clicking Create an Account you are agreeing to the <a href="/termsAndConditions" target="_blank">Terms and Conditions</a>, the <a href="/privacyPolicy" target="_blank">Privacy Policy</a> and the <a href="/cookiePolicy" target="_blank">Cookie Policy</a>				</p>
+			</div>
+			<div class="mt-50 hr bg-gray h-1"></div>
+			<div class="mt-25 f-18 medium color-heading text-center">
+				Do you have an Account? <a href="/login" class="link action-1">Sign In</a>			</div>
+		</div>
+	</div>
+</section><!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white@2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="d-flex align-items-center justify-content-center w-full h-full iframe_container"></div>
+</div>
+
+<!-- Bootstrap 4.3.1 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<!-- Fancybox 3 jQuery plugin JS (Open images and video in popup) -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<!-- Google maps JS API -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+<!-- Slick 1.8.1 jQuery plugin JS (Sliders) -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- AOS 2.3.1 jQuery plugin JS (Animations) -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
+<script src="js/jquery.maskedinput.min.js"></script>
+<!-- Startup 3 JS (Custom js for all blocks) -->
+<script src="js/script.js"></script>
+
+
+
+<!-- FIREBASE -->
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+
+<script type="text/javascript">
+
+	const signupButton = document.getElementById('signupButton')
+
+	signupButton.onclick = handleSignUp
+
+	var config = {
+		apiKey: "AIzaSyCO1_zkzzxhxXR4cYLILgXhIKLb1-XrjJY",
+		authDomain: "daily-guitar-workout.firebaseapp.com",
+		databaseURL: "https://daily-guitar-workout.firebaseio.com",
+		projectId: "daily-guitar-workout",
+		storageBucket: "daily-guitar-workout.appspot.com",
+		messagingSenderId: "746116739967",
+		appId: "1:746116739967:web:c76ce6e0800c7febbfe04a",
+		measurementId: "G-0E6LVS3111"
+	};
+
+	firebase.initializeApp(config)
+	// As httpOnly cookies are to be used, do not persist any state client side.
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+
+
+    /**
+     * Handles the sign up button press.
+     */
+    function handleSignUp() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var termsAndConditions = document.getElementById('termsAndConditions');
+
+      if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+      startLoadingAnimation()
+      // Sign in with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential)=>{
+        	// firebase.auth().currentUser.updateProfile({displayName: "John Doe", photoURL: "https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429_1280.png"})
+        	const tokenPromise = userCredential.user.getIdToken()
+        	const csrfToken = getCookie('DGW_csrfToken')
+        	return tokenPromise.then(token=>{
+        		return postIdTokenToSessionLogin('/login', token, csrfToken)
+        	})
+        })
+        .then((response) => {
+        	// console.log(response)
+        	// console.log(document.cookie)
+        	sendEmailVerification()
+			// A page redirect would suffice as the persistence is set to NONE.
+			return firebase.auth().signOut();
+		})
+		.then(() => {
+			// alert('pause runnning')
+			window.location.assign('/emailPreferences');
+		})
+		.catch(function(error) {
+			stopLoadingAnimation()
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        })
+		
+	}
+
+	async function postIdTokenToSessionLogin(path, idToken, csrfToken){
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('Accept', 'application/json');
+		const data = {idToken: idToken, _csrf: csrfToken}
+
+		const fetchData = {
+			method: 'POST',
+			// mode: 'cors',
+		    redirect: 'follow',
+		    credentials: 'include',
+			headers: headers,
+			body: JSON.stringify(data)
+		}
+		// console.log(fetchData)
+		const response = await fetch(path, fetchData)
+		return response
+	}
+
+// utility function called by getCookie( ) 
+function getCookieVal(offset) { 
+	var endstr = document.cookie.indexOf (";", offset); 
+	if (endstr == -1) 
+		{ endstr = document.cookie.length; } 
+	return unescape(document.cookie.substring(offset, endstr)); 
+} 
+// primary function to retrieve cookie by name 
+function getCookie(name) { 
+	var arg = name + "="; 
+	var alen = arg.length; 
+	var clen = document.cookie.length; 
+	var i = 0; 
+	while (i < clen) { 
+		var j = i + alen; 
+		if (document.cookie.substring(i, j) == arg) { 
+			return getCookieVal(j);
+		} 
+		i = document.cookie.indexOf(" ", i) + 1; 
+		if (i == 0) break;
+	} 
+	return ""; 
+} 
+
+    /**
+     * Sends an email verification to the user.
+     */
+    function sendEmailVerification() {
+      // [START sendemailverification]
+      return firebase.auth().currentUser.sendEmailVerification()
+      // [END sendemailverification]
+    }
+
+	function startLoadingAnimation(){
+	    var signupButton = document.querySelector('#signupButton');
+	    var smallSpan = document.querySelector('#smallSpan');
+        signupButton.innerHTML = "<div class='lds-dual-ring'></div>"
+        smallSpan.innerHTML = "<small>Please Be Patient, This May Take A Moment</small>"
+	}
+
+	function stopLoadingAnimation(){
+	    var signupButton = document.querySelector('#signupButton');
+	    var smallSpan = document.querySelector('#smallSpan');
+        signupButton.innerHTML = "Signup";
+        smallSpan.innerHTML = "";
+	}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "folders": [
+			{
+				"path": "/home/hugh/Documents/falloutSounds/DGWServer"
+			},
+			{
+				"path": "."
+			},
+			{
+				"path": "/home/hugh/Documents/falloutSounds/Themes/argon/argon-dashboard-pro-react-v1.0.0"
+			},
+			{
+				"path": "dailyGuitarWorkout/src/client/importer-client"
+			},
+			{
+				"path": "dailyGuitarWorkout/src/client/adminPanel"
+			},
+			{
+				"path": "dailyGuitarWorkout/src/client/userSource"
+			}
+		]
+}

@@ -1,0 +1,40 @@
+<%include ./partials/header%>
+
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-10 col-md-10">
+            <h1 class="display-2 text-white">Preview Your Practice</h1>
+            <p class="text-white mt-0 mb-5">Check out an example of what your practice email will look like.</p>
+            <a href="/emailPreferences" class="btn btn-info">Update My Preferences</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mainContent" class="container-fluid bg-primary">
+        <div class='lds-dual-ring'></div>
+        <h4 class="text-white">Building Your Email</h4>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+
+
+<script type="text/javascript">
+  const fetchData = {
+    header: new Headers(),
+    credentials: 'include'
+  }
+  fetch('/getEmailHtml', fetchData)
+  .then(response=>response.json())
+  .then((json)=>{
+    console.log(json)
+    document.getElementById('mainContent').innerHTML = json.html
+    document.getElementById('mainContent').className = "container-fluid"
+  })
+</script>
+
+<%include ./partials/footer%>

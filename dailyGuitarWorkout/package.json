@@ -1,0 +1,37 @@
+{
+  "name": "dailygutarworkout",
+  "version": "1.0.0",
+  "description": "Main Application for new modular version of Daily Guitar Workout",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test",
+    "recursive-install": "npx recursive-install",
+    "start": "cd src && npx nodemon -r dotenv/config app.js",
+    "setup": "./bin/setup.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huge11/dailyGuitarWorkout.git"
+  },
+  "author": "Huge11",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Huge11/dailyGuitarWorkout/issues"
+  },
+  "homepage": "https://github.com/Huge11/dailyGuitarWorkout#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^7.6.1",
+    "firebase-admin": "^8.9.0",
+    "mongoose": "^5.8.4",
+    "vhost": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "recursive-install": "^1.4.0"
+  }
+}
